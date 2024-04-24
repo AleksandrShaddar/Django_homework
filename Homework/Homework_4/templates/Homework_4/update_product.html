@@ -3,13 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Корректировка товара</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(145deg, rgba(145, 140, 140, 1) 0%, rgba(178, 209, 240, 1) 70%, rgba(145, 140, 140, 1) 100%);
+        font-family: 'Calibri', sans-serif;
+        color:steelblue;
+        font-size: 20px;
+      }
+      
+      .header {
+        color:olive;
+      }
+      
+      .form {
+        padding: 6px;
+        max-height: 100%;
+        min-width: 450px;
+        max-width: 800px;
+        text-align: center;
+        overflow: auto;
+      }
+
+      .form p {
+        margin-bottom: 6px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .form input, .form textarea {
+        padding: 0 4px;
+        width: 300px;
+        background-color: transparent;
+        border: 1px solid rgb(92, 95, 252);
+        border-radius: 4px;
+        outline: none;
+        color: inherit;
+        transition: .3s;
+      }
+      .form input:hover, .form textarea:hover {
+        box-shadow: 0 0 2px 1px rgb(92, 95, 252);
+      }
+
+      .form textarea::placeholder {
+        color: inherit;
+      }
+
+      .sendBtn {
+        margin-top: 10px;
+        padding: 4px 8px !important;
+        width: 100% !important;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        transition: .3s;
+      }
+
+      .sendBtn:hover {
+        box-shadow: 0 0 4px 2px rgb(92, 95, 252);
+      }
+    </style>
 </head>
 <body>
-  <form action="" method="post" enctype="multipart/form-data">
-      <p>{{ message }}</p>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Отправить">
+  <p class="header">{{ message }}</p>
+  <form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="sendBtn" type="submit" value="Отправить">
   </form>
 </body>
 </html>
